@@ -1,5 +1,8 @@
 <script setup>
 import { Head, Link } from '@inertiajs/vue3';
+import bridge from '@vkontakte/vk-bridge';
+
+bridge.send("VKWebAppInit");
 
 defineProps({
     canLogin: {
