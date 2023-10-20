@@ -9,6 +9,11 @@ window.axios = axios;
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
+import bridge from '@vkontakte/vk-bridge';
+
+// Отправляет событие инициализации нативному клиенту
+bridge.send("VKWebAppInit");
+
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
