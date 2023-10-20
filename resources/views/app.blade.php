@@ -15,7 +15,9 @@
         @vite(['resources/js/app.js', "resources/js/Pages/{$page['component']}.vue"])
         @inertiaHead
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased flex flex-col min-h-screen text-white scrollbar-hide">
         @inertia
     </body>
+
+    <script src="https://kit.fontawesome.com/bd53d87eef.js" crossorigin="anonymous"></script>
 </html>
