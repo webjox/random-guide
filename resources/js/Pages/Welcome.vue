@@ -1,6 +1,27 @@
 <script setup>
 import { Head } from '@inertiajs/vue3';
 import Main from "@/Layouts/Main.vue";
+import { Head, Link } from '@inertiajs/vue3';
+import bridge from '@vkontakte/vk-bridge';
+
+bridge.send("VKWebAppInit");
+
+defineProps({
+    canLogin: {
+        type: Boolean,
+    },
+    canRegister: {
+        type: Boolean,
+    },
+    laravelVersion: {
+        type: String,
+        required: true,
+    },
+    phpVersion: {
+        type: String,
+        required: true,
+    },
+});
 </script>
 
 <template>
