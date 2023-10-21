@@ -18,9 +18,10 @@
         "vue": "^3.2.41"
     },
     "dependencies": {
+        "@vkontakte/vk-bridge": "^2.11.2",
         "flowbite": "^1.8.1",
         "flowbite-vue": "^0.0.17",
-        "tailwind-scrollbar-hide": "^1.1.7",
-        "@vkontakte/vk-bridge": "^2.11.2"
+        "mmr-gl": "^0.1.372",
+        "tailwind-scrollbar-hide": "^1.1.7"
     }
 }
