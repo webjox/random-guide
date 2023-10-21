@@ -3,10 +3,6 @@ import forms from '@tailwindcss/forms';
 
 /** @type {import('tailwindcss').Config} */
 export default {
-    blocklist: [
-        'bg-white',
-    ],
-
     content: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
@@ -20,15 +16,17 @@ export default {
         colors: {
             transparent: 'transparent',
             current: 'currentColor',
-            'main' : '#4E2982',
-            'header' : '#976BD6',
-            'footer' : '#320571',
+            'cube' : '#0077FF',
 
         },
 
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+            },
+
+            animation: {
+                cube: 'spin 9s linear infinite',
             },
         },
     },
