@@ -17,7 +17,7 @@ export function useMap(el, centralPoint = null) {
             zoom: 14,
             center: centralPoint ? centralPoint.features[0].geometry.coordinates : defaultCenterPoint,
             style: 'mmr://api/styles/simple_style.json',
-            hash: true,
+            hash: false,
         });
 
         if (null !== centralPoint) {

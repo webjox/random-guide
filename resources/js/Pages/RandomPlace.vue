@@ -5,39 +5,25 @@ import { Head } from '@inertiajs/vue3';
 import axios from 'axios';
 import { Button, Rating } from 'flowbite-vue';
 import { ref, onBeforeMount } from 'vue';
+import { useRandomPlace } from '@/Composables/places.js';
 
 const randomPlace = ref(null)
-const token = import.meta.env.VITE_VK_MAPS_ACCESS_TOKEN ?? 'token';
-
-const getRandomPlace = async () => {
-    const baseApiUrl = 'https://maps.vk.com/api';
-    delete axios.defaults.headers.common['X-Requested-With'];
-    await axios.get(`${baseApiUrl}/places`, {
-        params: {
-            api_key: token,
-            q: 'Памятник',
-            location: '47.2372031,39.7120899',
-            radius: 1000,
-            fields: 'name,address,place_details,pin,bbox,type'
-        }
-    }).then(response => {
-        let results = response.data.results;
-        let randomIndex = Math.floor(Math.random() * results.length);
-
-        randomPlace.value = results[randomIndex]
-    })
+const mapKey = ref(1);
+const reloadPlace = () => {
+    useRandomPlace(randomPlace);
+    mapKey.value++;
 }
 
 onBeforeMount(() => {
-    getRandomPlace();
-})
+    reloadPlace();
+});
 </script>
 
 <template>
     <Head title="Random Place" />
     <GuestLayout class="grid place-items-center">
         <div class="grid place-items-center">
-            <Rating class="mx-auto my-2" rating="3" />
+            <Rating class="mx-auto my-2" :rating="3" />
         </div>
 
         <section class="flex flex-col gap-2">
@@ -45,9 +31,9 @@ onBeforeMount(() => {
             <p class="text-sm text-gray-500 italic text-center my-2">{{ randomPlace?.address }}</p>
         </section>
 
-        <Map :coordinates="randomPlace.pin" />
+        <Map :coordinates="randomPlace.pin" :key="mapKey" />
         <div class="flex gap-6 justify-around mt-6">
-            <Button color="dark" outline>Пропустить</Button>
+            <Button color="dark" outline @click="reloadPlace">Пропустить</Button>
             <Button color="green" outline>Я в деле!</Button>
         </div>
     </GuestLayout>

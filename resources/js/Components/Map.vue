@@ -1,6 +1,6 @@
 <script setup>
 import { useMap } from '@/Composables/map.js';
-import { ref, onMounted, defineProps } from 'vue';
+import { ref, onMounted, defineProps, watch } from 'vue';
 
 const props = defineProps({
     coordinates: {
