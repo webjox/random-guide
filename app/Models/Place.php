@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
-
 class Place extends Model
 {
     use HasFactory;
@@ -18,8 +17,8 @@ class Place extends Model
         'is_favorite',
     ];
 
-    public function user_places(): BelongsToMany
+    public function placesInfo(): HasMany
     {
-        return $this->belongsToMany(UserPlace::class, 'user_places');
+        return $this->HasMany(UserPlace::class);
     }
 }

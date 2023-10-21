@@ -16,8 +16,19 @@ class PlaceListController extends Controller
     public function placesList($user_id = 114)
     {
         $user = User::find($user_id);
-        $user = 
+        $places = $user->places()->with('placesInfo')->get();
+    }
 
-        dd($places);
+    public function toggleFavorite($placesInfoId, $is_favorite): void
+    {
+        $placesInfo = UserPlaces::find($placeInfoId);
+        
+        if($is_favorite){
+            $placesInfo->is_favorite = false;
+        } else {
+            $placesInfo->is_favorite = true;
+        }
+
+        $placesInfo->save();
     }
 }
