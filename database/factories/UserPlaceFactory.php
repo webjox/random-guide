@@ -18,7 +18,7 @@ class UserPlaceFactory extends Factory
     public function definition(): array
     {
         return [
-            'status' => $this->faker->word(),
+            'is_confirmed' => $this->faker->boolean(),
             'is_favorite' => $this->faker->boolean(),
         ];
     }
