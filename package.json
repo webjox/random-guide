@@ -22,6 +22,6 @@
         "flowbite": "^1.8.1",
         "flowbite-vue": "^0.0.17",
         "mmr-gl": "^0.1.372",
-        "tailwind-scrollbar-hide": "^1.1.7",
+        "tailwind-scrollbar-hide": "^1.1.7"
     }
 }
