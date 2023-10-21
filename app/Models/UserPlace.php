@@ -10,8 +10,8 @@ class UserPlace extends Model
     use HasFactory;
 
     protected $fillable = [
-        'data',
-        'rating',
+        'is_confirmed',
+        'is_favorite',
     ];
 
     public function places(): hasMany

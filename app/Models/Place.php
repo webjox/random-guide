@@ -14,6 +14,11 @@ class Place extends Model
 
     protected $fillable = [
         'status',
+        'name',
+        'is_favorite',
+        'longitude',
+        'latitude',
+        'data',
         'is_favorite',
     ];
 

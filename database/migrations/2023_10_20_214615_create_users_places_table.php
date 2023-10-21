@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users_places', function (Blueprint $table) {
+        Schema::create('user_places', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class);
             $table->foreignIdFor(Place::class);
-            $table->string('status'); // (rejected/confirmed)
+            $table->boolean('is_confirmed'); // (rejected/confirmed)
             $table->boolean('is_favorite')->default(false);
             $table->timestamps();
         });
