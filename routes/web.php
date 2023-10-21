@@ -1,10 +1,8 @@
 <?php
 
+use App\Http\Controllers\PlaceListController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RandomPlaceController;
-use App\Http\Controllers\PlaceListController;
-use App\Http\Controllers\RandomPlaceController;
-use App\Http\Controllers\MapApiController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
