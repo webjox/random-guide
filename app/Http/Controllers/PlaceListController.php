@@ -7,24 +7,17 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 use App\Http\Requests;
+use App\Models\User;
+use App\Models\Place;
 use App\Facades\LocationProcessing;
 
 class PlaceListController extends Controller
 {
-    public function request()
+    public function placesList($user_id = 114)
     {
-        $placesRaw = Http::get('https://demo.maps.vk.com/api/places', [
-            'q' => 'q=Розливное пиво; q=Пиво, ',
-            'location' => '47.238385, 39.712174',
-            'radius' => '10000',
-        ]);
+        $user = User::find($user_id);
+        $user = 
 
-        $places = json_decode($placesRaw, true);
-
-        $finalPlace = LocationProcessing::randomizer($places['results']);
-
-        return Inertia::render('app', [
-                'response' => $finalPlace,
-        ]);
+        dd($places);
     }
 }

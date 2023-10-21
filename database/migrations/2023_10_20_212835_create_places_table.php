@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::create('places', function (Blueprint $table) {
             $table->id();
             $table->json('data');
-            $table->float('rating');
+            $table->string('name');
+            $table->string('longitude');
+            $table->string('latitude');
+            $table->string('type');
             $table->timestamps();
         });
     }
