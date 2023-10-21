@@ -1,23 +1,48 @@
-import { onMounted } from "vue";
+import { watchEffect } from "vue";
 import mmrgl from "mmr-gl";
 import 'mmr-gl/dist/mmr-gl.css';
 
-export function useMap() {
-    onMounted(() => {
-        mmrgl.baseApiUrl = 'https://demo.maps.vk.com';
-        mmrgl.accessToken = 'accessToken';
+const token = import.meta.env.VITE_VK_MAPS_ACCESS_TOKEN ?? 'token';
+const defaultCenterPoint = [39.7233, 47.2313];
+
+export function useMap(el, centralPoint = null) {
+    watchEffect( () => {
+        // Provide only for demo API, main API is default
+        // mmrgl.baseApiUrl = 'https://demo.maps.vk.com';
+
+        mmrgl.accessToken = token;
+
         const map = new mmrgl.Map({
-            container: 'map',
-            zoom: 8,
-            center: [47.2313, 39.7233],
-            style: 'mmr://api/styles/main_style.json',
+            container: el,
+            zoom: 14,
+            center: centralPoint ? centralPoint.features[0].geometry.coordinates : defaultCenterPoint,
+            style: 'mmr://api/styles/simple_style.json',
             hash: true,
         });
+
+        if (null !== centralPoint) {
+            map.on('load', function () {
+                map.loadImage('https://maps.vk.com/api/styles/pins/blue_target.png', function (error, image) {
+                    if (error) throw error;
+                    map.addImage('custom_pin', image);
+                    map.addLayer({
+                        "id": "points",
+                        "type": "symbol",
+                        "source": {
+                            "type": "geojson",
+                            "data": centralPoint
+                        },
+                        "layout": {
+                            "icon-image": "custom_pin",
+                            "icon-size": 1
+                        }
+                    })
+                })
+            });
+        }
 
         return () => {
             if (map) map.remove();
         }
     });
-
-    return '<div id="map"></div>'
 }
