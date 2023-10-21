@@ -25,6 +25,18 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/favorites', function () {
+    return Inertia::render('Favorites');
+});
+
+Route::get('/information', function () {
+    return Inertia::render('Information');
+});
+
+Route::get('/history', function () {
+    return Inertia::render('History');
+});
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
