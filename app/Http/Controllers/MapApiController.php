@@ -7,21 +7,24 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 use App\Http\Requests;
+use App\Facades\LocationProcessing;
 
 class MapApiController extends Controller
 {
     public function request()
     {
-        $response = Http::get('https://demo.maps.vk.com/api/types', [
-            'q' => 'q=Москва Ленинградский 39с80;',
-
+        $placesRaw = Http::get('https://demo.maps.vk.com/api/places', [
+            'q' => 'q=Розливное пиво; q=Пиво, ',
+            'location' => '47.238385, 39.712174',
+            'radius' => '10000',
         ]);
 
-        dd($response->body());
-        dd(json_decode($response->json(), true));
+        $places = json_decode($placesRaw, true);
+
+        $finalPlace = LocationProcessing::randomizer($places['results']);
 
         return Inertia::render('app', [
-                'response' => $response,
+                'response' => $finalPlace,
         ]);
     }
 }
