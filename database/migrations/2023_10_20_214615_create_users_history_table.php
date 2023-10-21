@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\User;
+use App\Models\Place;
 
 return new class extends Migration
 {
@@ -11,16 +13,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users_history', function (Blueprint $table) {
+        Schema::create('users_place', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id')->unsigned()->index();
-            $table->bigInteger('place_id')->unsigned()->index();
-            $table->string('status'); // (new/rejected/waiting/confirmed)
+            $table->foreignIdFor(User::class);
+            $table->foreignIdFor(Place::class);
+            $table->string('status'); // (rejected/confirmed)
+            $table->boolean('is_favorite')->default(false);
             $table->timestamps();
-        });
-        Schema::table('users_history', function($table) {
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('place_id')->references('id')->on('places');
         });
     }
 
