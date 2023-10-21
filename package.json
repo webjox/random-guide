@@ -20,7 +20,7 @@
     "dependencies": {
         "flowbite": "^1.8.1",
         "flowbite-vue": "^0.0.17",
-        "tailwind-scrollbar-hide": "^1.1.7"
+        "tailwind-scrollbar-hide": "^1.1.7",
         "@vkontakte/vk-bridge": "^2.11.2"
     }
 }
