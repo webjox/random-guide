@@ -1,5 +1,4 @@
 <script setup>
-import { Head } from '@inertiajs/vue3';
 import Main from "@/Layouts/Main.vue";
 import { Head, Link } from '@inertiajs/vue3';
 import bridge from '@vkontakte/vk-bridge';
