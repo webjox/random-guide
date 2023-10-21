@@ -1,9 +1,9 @@
 <script setup>
 import { Head, Link } from '@inertiajs/vue3';
 import {Button} from "flowbite-vue";
-// import bridge from '@vkontakte/vk-bridge';
-//
-// bridge.send("VKWebAppInit");
+import bridge from '@vkontakte/vk-bridge';
+
+bridge.send("VKWebAppInit");
 
 </script>
 
