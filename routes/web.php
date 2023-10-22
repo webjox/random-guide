@@ -18,14 +18,7 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+Route::get('/', fn () => Inertia::render('Welcome'))->name('home');
 
 Route::get('/favorites', function () {
     return Inertia::render('Favorites');
@@ -33,7 +26,7 @@ Route::get('/favorites', function () {
 
 Route::get('/information', function () {
     return Inertia::render('Information');
-});
+})->name('info');
 
 Route::get('/history', function () {
     return Inertia::render('History');
@@ -43,7 +36,7 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/', [PlaceListController::class, 'placesList'])->name('main');
+Route::get('/places', [PlaceListController::class, 'placesList'])->name('main');
 
 // Route::get('/dashboard', function () {
 //     return Inertia::render('Dashboard');

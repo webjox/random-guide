@@ -1,4 +1,4 @@
-import { watchEffect } from "vue";
+import { watchEffect, toValue } from "vue";
 import mmrgl from "mmr-gl";
 import 'mmr-gl/dist/mmr-gl.css';
 
@@ -13,14 +13,14 @@ export function useMap(el, centralPoint = null) {
         mmrgl.accessToken = token;
 
         const map = new mmrgl.Map({
-            container: el,
+            container: toValue(el),
             zoom: 14,
-            center: centralPoint ? centralPoint.features[0].geometry.coordinates : defaultCenterPoint,
+            center: centralPoint ? toValue(centralPoint).features[0].geometry.coordinates : defaultCenterPoint,
             style: 'mmr://api/styles/simple_style.json',
             hash: false,
         });
 
-        if (null !== centralPoint) {
+        if (null !== toValue(centralPoint)) {
             map.on('load', function () {
                 map.loadImage('https://maps.vk.com/api/styles/pins/blue_target.png', function (error, image) {
                     if (error) throw error;
@@ -30,7 +30,7 @@ export function useMap(el, centralPoint = null) {
                         "type": "symbol",
                         "source": {
                             "type": "geojson",
-                            "data": centralPoint
+                            "data": toValue(centralPoint)
                         },
                         "layout": {
                             "icon-image": "custom_pin",

@@ -3,14 +3,11 @@ import { useMap } from '@/Composables/map.js';
 import { ref, onMounted, defineProps, watch } from 'vue';
 
 const props = defineProps({
-    coordinates: {
-        type: Array,
-        default: [39.7120899, 47.2372031]
-    }
+    coordinates: Array
 })
 
 const mapContainer = ref(null)
-const centralPoint = {
+const centralPoint = ref({
     "type": "FeatureCollection",
     "features": [{
         "type": "Feature",
@@ -19,12 +16,16 @@ const centralPoint = {
             "coordinates": props.coordinates
         }
     }]
-}
+})
 
-onMounted(() => useMap(mapContainer.value, centralPoint))
+onMounted(() => {
+    useMap(mapContainer, centralPoint);
+})
+
+watch(centralPoint, () => useMap(mapContainer, centralPoint))
 
 </script>
 
 <template>
-    <div id="map" ref="mapContainer" class="h-64 my-12"></div>
+    <div id="map" ref="mapContainer" class="w-96 h-96 rounded-md shadow-md"></div>
 </template>
