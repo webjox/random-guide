@@ -11,8 +11,10 @@ class FavoriteController extends Controller
     /**
      * Display favorites place user
      */
-    public function __invoke(User $user): Response
+    public function __invoke(): Response
     {
+        $user = auth()->user();
+
         return Inertia::render('Favorites', [
             'favoritePlaces' => $user->places()->with('placesInfo')->get(),
         ]);
