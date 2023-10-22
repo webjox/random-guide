@@ -46,11 +46,11 @@ onMounted(() => {
 
         <div class="flex gap-12">
             <Button color="dark" outline class="w-48">
-                <Link href="/favorites" as="button">Избранное</Link>
+                <Link href="/favorites/5" as="button">Избранное</Link>
             </Button>
 
             <Button color="dark" outline class="w-48">
-                <Link href="/history" as="button">Моя история</Link>
+                <Link href="/history/5" as="button">Моя история</Link>
             </Button>
         </div>
     </Layout>
