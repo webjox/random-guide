@@ -3,12 +3,20 @@ import Map from '@/Components/Map.vue';
 import Layout from '@/Layouts/Layout.vue';
 import { Head } from '@inertiajs/vue3';
 import { Button, Rating } from 'flowbite-vue';
-import { ref } from 'vue';
+import { toValue } from 'vue';
 import { useRandomPlace } from '@/Composables/places.js';
 import { router } from '@inertiajs/vue3';
 
 const place = useRandomPlace();
-const mapKey = ref(1);
+const vkId = 12;
+
+function accept() {
+    router.post('/navigator', {
+        response: toValue(place),
+        userVkId: vkId,
+        is_confirmed: false,
+    });
+}
 
 function reload() {
     router.visit('/random');
@@ -30,7 +38,7 @@ function reload() {
 
         <div class="flex gap-6 justify-around mt-6">
             <Button color="dark" outline @click="reload">Пропустить</Button>
-            <Button color="green" outline>Я в деле!</Button>
+            <Button color="green" outline @click="accept">Я в деле!</Button>
         </div>
     </Layout>
 </template>

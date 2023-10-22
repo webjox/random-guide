@@ -32,7 +32,7 @@ export function useRandomPlace() {
             location: '47.2372031,39.7120899',
             // location: location.pin.reverse().join(),
             radius: 5000,
-            fields: 'name,address,pin,bbox,type',
+            fields: 'name,address,address_details,pin,bbox,type',
             limit: 1000,
         }
     })
