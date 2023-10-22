@@ -27,11 +27,11 @@ Route::inertia('/', 'Welcome', [
     'user' => auth()->user(),
 ])->name('home');
 
-Route::get('/favorites', function () {
+Route::get('/favorites/{user}', function () {
     return Inertia::render('Favorites');
 });
 
-Route::get('/information', function () {
+Route::get('/information/{user}', function () {
     return Inertia::render('Information');
 })->name('info');
 
