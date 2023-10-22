@@ -34,11 +34,11 @@ Route::get('/history', function () {
     return Inertia::render('History');
 });
 
-Route::get('/places', [PlaceListController::class, 'placesList'])->name('main');
+Route::get('/places/init', [PlaceListController::class, 'placesList'])->name('main');
 
-Route::get('/random', RandomPlaceController::class)->name('random');
+Route::get('/random/init', RandomPlaceController::class)->name('random');
 
-Route::post('/navigator', SavingPlaceController::class)->name('save-place');
-Route::inertia('/navigator', 'Navigator')->name('navigator');
+Route::post('/navigator/init', SavingPlaceController::class)->name('save-place');
+Route::inertia('/navigator/init', 'Navigator')->name('navigator');
 
 require __DIR__.'/auth.php';
