@@ -20,7 +20,9 @@ use Inertia\Inertia;
 
 // Route::get('/', fn () => Inertia::render('Welcome'))->name('home');
 
-Route::inertia('/', 'Welcome')->name('home');
+Route::inertia('/', 'Welcome', [
+    'user' => auth()->user(),
+])->name('home');
 
 Route::get('/favorites', function () {
     return Inertia::render('Favorites');
