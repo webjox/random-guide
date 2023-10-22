@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\CheckinController;
+use App\Http\Controllers\NavigatorController;
 use App\Http\Controllers\PlaceListController;
 use App\Http\Controllers\RandomPlaceController;
 use App\Http\Controllers\SavingPlaceController;
+use App\Http\Controllers\SkipPlaceController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -20,7 +23,9 @@ use Inertia\Inertia;
 
 // Route::get('/', fn () => Inertia::render('Welcome'))->name('home');
 
-Route::inertia('/', 'Welcome')->name('home');
+Route::inertia('/', 'Welcome', [
+    'user' => auth()->user(),
+])->name('home');
 
 Route::get('/favorites', function () {
     return Inertia::render('Favorites');
@@ -39,6 +44,8 @@ Route::get('/places', [PlaceListController::class, 'placesList'])->name('main');
 Route::get('/random', RandomPlaceController::class)->name('random');
 
 Route::post('/navigator', SavingPlaceController::class)->name('save-place');
-Route::inertia('/navigator', 'Navigator')->name('navigator');
+Route::get('/navigator', NavigatorController::class)->name('navigator');
+Route::post('/checkin', CheckinController::class)->name('checkin');
+Route::get('/skip', SkipPlaceController::class)->name('skip');
 
 require __DIR__.'/auth.php';

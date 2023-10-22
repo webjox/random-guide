@@ -1,8 +1,21 @@
 <script setup>
-import { Head, Link } from "@inertiajs/vue3";
+import { Head, Link, router } from "@inertiajs/vue3";
 import Layout from "@/Layouts/Layout.vue";
 import Cube from "@/Components/Cube.vue";
 import { Button } from "flowbite-vue";
+import { onMounted } from "vue";
+
+const props = defineProps({
+    user: Object
+})
+
+
+onMounted(() => {
+    router.post('/login', {
+        vk_id: 12,
+    })
+    console.log(props.user)
+});
 </script>
 
 <template>
@@ -23,7 +36,7 @@ import { Button } from "flowbite-vue";
 
         <div class="flex gap-12 place-items-baseline">
             <p class="space-x-2 sm:space-x-1 text-xl">
-                <span>Мой рейтинг: 4,6</span>
+                <span>Мой рейтинг: {{ user?.rating }}</span>
                 <i class="fa-regular fa-star text-yellow-200"></i>
             </p>
             <Link href="/information">
