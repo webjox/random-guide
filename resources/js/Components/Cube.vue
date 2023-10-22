@@ -2,13 +2,13 @@
 import { Link } from '@inertiajs/vue3';
 
 defineProps({
-    route: String,
+    clickAction: String
 })
 </script>
 
 <template>
     <Link
-        :href="route"
+        :href="clickAction"
         as="button"
         class="rounded-full h-64 w-64 flex items-center justify-center bg-cube drop-shadow-md transition duration-700 ease-in-out"
     >

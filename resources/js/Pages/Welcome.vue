@@ -19,7 +19,7 @@ import { Button } from "flowbite-vue";
             </p>
         </section>
 
-        <Cube class="mb-12" />
+        <Cube class="mb-12" click-action="/random" />
 
         <div class="flex gap-12 place-items-baseline">
             <p class="space-x-2 sm:space-x-1 text-xl">

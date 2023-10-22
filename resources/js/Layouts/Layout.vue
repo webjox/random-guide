@@ -8,11 +8,18 @@ onMounted(() => bridge.send("VKWebAppInit"))
 
 <template>
     <main class="container h-screen mx-auto my-6 grid grid-cols-1 grid-flow-row justify-stretch">
+
         <header class="text-center">
-            <Link class="text-sm font-bold text-gray-600" as="button">HyperCleverFace</Link>
+            <Link
+                class="text-sm font-bold text-gray-600"
+                as="button"
+                href="/"
+            >HyperCleverFace</Link>
         </header>
+
         <div class="flex flex-col gap-6 content-center items-center">
             <slot />
         </div>
+
     </main>
 </template>

@@ -16,7 +16,7 @@ export default {
         colors: {
             transparent: 'transparent',
             current: 'currentColor',
-            'cube' : '#0077FF',
+            cube : '#0077FF',
 
         },
 
@@ -35,5 +35,6 @@ export default {
         forms,
         require('tailwind-scrollbar-hide'),
         require('flowbite/plugin'),
+        require('@tailwindcss/aspect-ratio'),
     ],
 };
