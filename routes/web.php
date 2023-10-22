@@ -5,6 +5,7 @@ use App\Http\Controllers\NavigatorController;
 use App\Http\Controllers\PlaceListController;
 use App\Http\Controllers\RandomPlaceController;
 use App\Http\Controllers\SavingPlaceController;
+use App\Http\Controllers\SkipPlaceController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -45,5 +46,6 @@ Route::get('/random', RandomPlaceController::class)->name('random');
 Route::post('/navigator', SavingPlaceController::class)->name('save-place');
 Route::get('/navigator', NavigatorController::class)->name('navigator');
 Route::post('/checkin', CheckinController::class)->name('checkin');
+Route::get('/skip', SkipPlaceController::class)->name('skip');
 
 require __DIR__.'/auth.php';

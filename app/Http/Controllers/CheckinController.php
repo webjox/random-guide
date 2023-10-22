@@ -14,8 +14,14 @@ class CheckinController extends Controller
             'is_confirmed' => true,
         ]);
 
+        $user = auth()->user();
+        $rating = $user->rating;
+        $user->update([
+            'rating' => $rating + rand(1, 10),
+        ]);
+
         return Inertia::render('Welcome', [
-            'user' => auth()->user(),
+            'user' => $user,
         ]);
     }
 }

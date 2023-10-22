@@ -19,6 +19,7 @@ function accept() {
 }
 
 function reload() {
+    router.get('/skip');
     router.visit('/random');
 }
 </script>
