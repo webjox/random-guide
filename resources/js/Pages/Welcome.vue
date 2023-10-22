@@ -3,19 +3,10 @@ import { Head, Link, router } from "@inertiajs/vue3";
 import Layout from "@/Layouts/Layout.vue";
 import Cube from "@/Components/Cube.vue";
 import { Button } from "flowbite-vue";
-import { onMounted } from "vue";
 
-const props = defineProps({
+defineProps({
     user: Object
 })
-
-
-onMounted(() => {
-    router.post('/login', {
-        vk_id: 12,
-    })
-    console.log(props.user)
-});
 </script>
 
 <template>

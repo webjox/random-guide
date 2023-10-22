@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CheckinController;
+use App\Http\Controllers\InitAppController;
 use App\Http\Controllers\NavigatorController;
 use App\Http\Controllers\PlaceListController;
 use App\Http\Controllers\RandomPlaceController;
@@ -21,7 +22,7 @@ use Inertia\Inertia;
 |
 */
 
-// Route::get('/', fn () => Inertia::render('Welcome'))->name('home');
+Route::get('/init', InitAppController::class);
 
 Route::inertia('/', 'Welcome', [
     'user' => auth()->user(),
@@ -41,7 +42,7 @@ Route::get('/history', function () {
 
 Route::get('/places', [PlaceListController::class, 'placesList'])->name('main');
 
-Route::get('/random', RandomPlaceController::class)->name('random');
+Route::inertia('/random', 'RandomPlace')->name('random');
 
 Route::post('/navigator', SavingPlaceController::class)->name('save-place');
 Route::get('/navigator', NavigatorController::class)->name('navigator');

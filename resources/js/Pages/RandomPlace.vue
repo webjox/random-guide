@@ -8,12 +8,10 @@ import { useRandomPlace } from '@/Composables/places.js';
 import { router } from '@inertiajs/vue3';
 
 const place = useRandomPlace();
-const vkId = 12;
 
 function accept() {
     router.post('/navigator', {
         response: toValue(place),
-        userVkId: vkId,
         is_confirmed: false,
     });
 }
