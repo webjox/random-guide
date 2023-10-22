@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CheckinController;
+use App\Http\Controllers\NavigatorController;
 use App\Http\Controllers\PlaceListController;
 use App\Http\Controllers\RandomPlaceController;
 use App\Http\Controllers\SavingPlaceController;
@@ -41,6 +43,7 @@ Route::get('/places', [PlaceListController::class, 'placesList'])->name('main');
 Route::get('/random', RandomPlaceController::class)->name('random');
 
 Route::post('/navigator', SavingPlaceController::class)->name('save-place');
-Route::inertia('/navigator', 'Navigator')->name('navigator');
+Route::get('/navigator', NavigatorController::class)->name('navigator');
+Route::post('/checkin', CheckinController::class)->name('checkin');
 
 require __DIR__.'/auth.php';
