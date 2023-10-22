@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\CheckinController;
+use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\InitAppController;
 use App\Http\Controllers\NavigatorController;
 use App\Http\Controllers\PlaceListController;
@@ -28,17 +30,14 @@ Route::inertia('/', 'Welcome', [
     'user' => auth()->user(),
 ])->name('home');
 
-Route::get('/favorites', function () {
-    return Inertia::render('Favorites');
-});
+Route::get('/favorites', FavoriteController::class);
+Route::get('/history', HistoryController::class);
 
-Route::get('/information', function () {
-    return Inertia::render('Information');
-})->name('info');
+Route::inertia('/information', 'Information');
 
-Route::get('/history', function () {
-    return Inertia::render('History');
-});
+// Route::get('/information/{user}', function () {
+//     return Inertia::render('Information');
+// })->name('info');
 
 Route::get('/places', [PlaceListController::class, 'placesList'])->name('main');
 
