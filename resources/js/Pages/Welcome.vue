@@ -9,12 +9,10 @@ const props = defineProps({
     user: Object
 })
 
-
 onMounted(() => {
     router.post('/login', {
         vk_id: 12,
     })
-    console.log(props.user)
 });
 </script>
 

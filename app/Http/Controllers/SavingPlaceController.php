@@ -14,13 +14,9 @@ class SavingPlaceController extends Controller
     public function __invoke(Request $request): Response
     {
         $response = $request->input('response');
-        $userVkId = $request->input('userVkId');
         $is_confirmed = $request->boolean('is_confirmed');
 
-        $user = User::firstOrCreate([
-            'vk_id' => $userVkId,
-            'rating' => 0,
-        ]);
+        $user = auth()->user();
 
         $addressJson = json_encode($response['address_details']);
 
