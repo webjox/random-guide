@@ -36,9 +36,16 @@ function reload() {
 
         <Map :coordinates="place.pin" v-if="place" />
 
-        <div class="flex gap-6 justify-around mt-6">
-            <Button color="dark" outline @click="reload">Пропустить</Button>
-            <Button color="green" outline @click="accept">Я в деле!</Button>
+        <div class="flex gap-4 justify-around mt-6 grid-cols-2">
+            <Button color="dark" outline @click="reload">
+                <span class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">-5</span>
+                Пропустить
+            </Button>
+            <Button color="green" outline @click="accept">
+                <span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">+10</span>
+                Я в деле!
+            </Button>
         </div>
+
     </Layout>
 </template>
