@@ -50,7 +50,7 @@ VITE_VK_MAPS_ACCESS_TOKEN='api_token'
 
 Проект создан командой HyperCleverFace в рамках кейса от платформы [VK mini apps](./docs/case.pdf).
 
-- [Всеволод Гиренко](@sauromates)
-- [Денис Корбаков](@deniskorbakov)
-- [Матвей Егрищин](@de-Lolec)
-- [Роман Корчнев](@r0m04k0)
+- [Всеволод Гиренко](https://github.com/sauromates)
+- [Денис Корбаков](https://github.com/deniskorbakov)
+- [Матвей Егрищин](https://github.com/de-Lolec)
+- [Роман Корчнев](https://github.com/r0m04k0)
